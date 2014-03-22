@@ -1,0 +1,12 @@
+<div ng-include="'partials/navbar'"></div>
+
+<h1><span ng-show="currentUser">{{ currentUser.name }}</span></h1>
+
+<ul class="vehicles">
+  <li ng-repeat="vehicle in vehicles">
+  <p>{{vehicle.name}}</p>
+</ul>
+
+<div class="footer">
+  <p>MileageTrack</p>
+</div>

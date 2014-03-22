@@ -10,7 +10,8 @@ angular.module('mileagetrackApp', [
     $routeProvider
       .when('/', {
         templateUrl: 'partials/main',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        authenticate: false
       })
       .when('/login', {
         templateUrl: 'partials/login',
@@ -19,6 +20,12 @@ angular.module('mileagetrackApp', [
       .when('/signup', {
         templateUrl: 'partials/signup',
         controller: 'SignupCtrl'
+      })
+
+      .when('/dashboard', {
+        templateUrl: 'partials/dashboard',
+        controller: 'DashboardCtrl',
+        authenticate: true
       })
       .when('/settings', {
         templateUrl: 'partials/settings',
@@ -54,5 +61,10 @@ angular.module('mileagetrackApp', [
       if (next.authenticate && !Auth.isLoggedIn()) {
         $location.path('/login');
       }
+
+      else if (next.authenticate === false) {
+        $location.path('/dashboard');
+      }
+
     });
   });

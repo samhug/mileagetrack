@@ -1,13 +1,15 @@
 'use strict';
 
-var should = require('should'),
+var should   = require('should'),
     mongoose = require('mongoose'),
+    app      = require('../../../server'),
     User = mongoose.model('User');
 
 var user;
 
 describe('User Model', function() {
-  before(function(done) {
+
+  beforeEach(function(done) {
     user = new User({
       provider: 'local',
       name: 'Fake User',
@@ -16,13 +18,16 @@ describe('User Model', function() {
     });
 
     // Clear users before testing
-    User.remove().exec();
-    done();
+    User.remove().exec().then(function() {
+      done();
+    });
   });
 
   afterEach(function(done) {
-    User.remove().exec();
-    done();
+    // Clear users
+    User.remove().exec().then(function() {
+      done();
+    });
   });
 
   it('should begin with no users', function(done) {
@@ -32,8 +37,16 @@ describe('User Model', function() {
     });
   });
 
+  it('should add a user', function(done) {
+    user.save(function(err) {
+      should.not.exist(err);
+      done();
+    });
+  });
+
   it('should fail when saving a duplicate user', function(done) {
     user.save();
+
     var userDup = new User(user);
     userDup.save(function(err) {
       should.exist(err);

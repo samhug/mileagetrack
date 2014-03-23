@@ -2,11 +2,11 @@
 
 angular.module('mileagetrackApp')
   .factory('Vehicle', ['$resource', function ($resource) {
-    return $resource('/api/vehicles/:id', {}, {
+    return $resource('/api/vehicle/:id', { id: '@id' }, {
       list: {
         method: 'GET',
         params: {
-          id:''
+          id: ''
         },
         isArray: true
       }

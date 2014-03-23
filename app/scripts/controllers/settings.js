@@ -1,21 +1,49 @@
 'use strict';
 
 angular.module('mileagetrackApp')
-  .controller('SettingsCtrl', function ($scope, User, Auth) {
-    $scope.errors = {};
+  .controller('SettingsCtrl', ['$scope', 'User', 'Auth', 'Vehicle', function ($scope, User, Auth, Vehicle) {
 
-    $scope.changePassword = function(form) {
-      $scope.submitted = true;
+    var _scope;
+
+    // Change Password Scope
+    $scope.changePassword = _scope = {
+      errors: {},
+    };
+    _scope.changePassword = function(form) {
+      _scope.submitted = true;
+
+      console.dir(_scope);
 
       if(form.$valid) {
-        Auth.changePassword( $scope.user.oldPassword, $scope.user.newPassword )
+        Auth.changePassword( _scope.user.oldPassword, _scope.user.newPassword )
         .then( function() {
-          $scope.message = 'Password successfully changed.';
+          _scope.message = 'Password successfully changed.';
         })
         .catch( function() {
           form.password.$setValidity('mongoose', false);
-          $scope.errors.other = 'Incorrect password';
+          _scope.errors.other = 'Incorrect password';
         });
       }
-		};
-  });
+    };
+
+
+    // Add Vehicle Scope
+    var vscope;
+    $scope.addVehicle = vscope = {
+      errors: {},
+    };
+
+    vscope.vehicleAdd = function(form) {
+      vscope.submitted = true;
+
+      if(form.$valid) {
+        Vehicle.save(vscope.vehicle, function() {
+          vscope.message = 'Vehicle Added';
+        }, function () {
+          vscope.message = 'Failed! '+vscope.vehicle;
+        });
+      }
+    };
+
+
+  }]);

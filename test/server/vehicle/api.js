@@ -84,10 +84,10 @@ describe('Vehicles API', function() {
   });
   */
 
-  describe('GET /api/vehicles', function() {
+  describe('GET /api/vehicle', function() {
     it('should respond with JSON array', function(done) {
       userRequest
-        .get('/api/vehicles')
+        .get('/api/vehicle')
         .expect(200)
         .expect('content-type', /json/)
         .end(function (err, res) {
@@ -98,10 +98,10 @@ describe('Vehicles API', function() {
     });
   });
 
-  describe('GET /api/vehicles/:id', function() {
+  describe('GET /api/vehicle/:id', function() {
     it('should respond with JSON object', function(done) {
       userRequest
-        .get('/api/vehicles/'+testVehicle._id)
+        .get('/api/vehicle/'+testVehicle._id)
         .expect(200)
         .expect('content-type', /json/)
         .end(function (err, res) {

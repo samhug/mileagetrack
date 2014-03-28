@@ -1,6 +1,6 @@
 {
   "name": "mileagetrack",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "angular": "1.2.11",
     "json3": "~3.2.6",

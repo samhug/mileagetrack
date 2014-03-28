@@ -45,12 +45,14 @@ describe('User Model', function() {
   });
 
   it('should fail when saving a duplicate user', function(done) {
-    user.save();
+    user.save(function() {
 
-    var userDup = new User(user);
-    userDup.save(function(err) {
-      should.exist(err);
-      done();
+      var userDup = new User(user);
+      userDup.save(function(err) {
+        should.exist(err);
+        done();
+      });
+
     });
   });
 

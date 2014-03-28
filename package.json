@@ -10,7 +10,8 @@
     "passport-local": "~0.1.6",
     "ejs": "~0.8.4",
     "mpromise": "^0.5.1",
-    "node-restful": "^0.1.16"
+    "node-restful": "^0.1.16",
+    "q": "^1.0.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

@@ -25,8 +25,9 @@ describe('Entry API', function() {
     testUser = new helpers.TestUser();
     testUser.wait(function() {
       testUser.createVehicle();
-
-      done();
+      testUser.wait(function() {
+        done();
+      });
     });
 
   });

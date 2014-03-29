@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
 angular.module('mileagetrackApp')
-  .controller('SettingsCtrl', ['$scope', 'User', 'Auth', 'Vehicle', function ($scope, User, Auth, Vehicle) {
+  .controller('SettingsCtrl', function ($scope, Auth) {
 
     var _scope;
 
@@ -11,8 +11,6 @@ angular.module('mileagetrackApp')
     };
     _scope.changePassword = function(form) {
       _scope.submitted = true;
-
-      console.dir(_scope);
 
       if(form.$valid) {
         Auth.changePassword( _scope.user.oldPassword, _scope.user.newPassword )
@@ -26,24 +24,4 @@ angular.module('mileagetrackApp')
       }
     };
 
-
-    // Add Vehicle Scope
-    var vscope;
-    $scope.addVehicle = vscope = {
-      errors: {},
-    };
-
-    vscope.vehicleAdd = function(form) {
-      vscope.submitted = true;
-
-      if(form.$valid) {
-        Vehicle.save(vscope.vehicle, function() {
-          vscope.message = 'Vehicle Added';
-        }, function () {
-          vscope.message = 'Failed! '+vscope.vehicle;
-        });
-      }
-    };
-
-
-  }]);
+  });

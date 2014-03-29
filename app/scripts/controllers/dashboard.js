@@ -20,9 +20,20 @@ angular.module('mileagetrackApp').directive(
   });
 
 angular.module('mileagetrackApp')
-  .controller('DashboardCtrl', ['$scope', 'User', 'Vehicle', 'Entry', 'dateFilter', function ($scope, User, Vehicle, Entry, dateFilter) {
+  .controller('DashboardCtrl', function ($scope, $location, User, Vehicle, Entry, dateFilter) {
 
     $scope.vehicles = Vehicle.list();
+
+    $scope.vehicles.$promise.then(function () {
+      // If the user doesn't have any vehicles registered, redirect them to the
+      // add vehicle page with the new_user param.
+      if ($scope.vehicles.length === 0) {
+        $scope.message = "test";
+        $location.search('new_user');
+        $location.path('/vehicle/add');
+        return;
+      }
+    });
 
     $scope.vehicle = Vehicle.get({id: $scope.currentUser.defaultVehicle});
 
@@ -36,10 +47,9 @@ angular.module('mileagetrackApp')
     };
 
     $scope.newEntry = function(form) {
-      if(form.$valid) {
-        var entry = new Entry(angular.extend({ vehicle: $scope.vehicle._id }, form));
-        entry.$save();
-      }
+      var e = angular.extend({ vehicle: $scope.vehicle._id }, form);
+      var entry = new Entry(e);
+      entry.$save();
     };
 
-  }]);
+  });

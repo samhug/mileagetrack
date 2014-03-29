@@ -1,4 +1,5 @@
-<div class="row panel panel-default">
+<div class="row panel panel-default" ng-controller="VehicleAddCtrl">
+  <div ng-include src='"partials/flash_messages.html"'></div>
   <div class="panel-heading">
     <h1 class="panel-title">Add New Vehicle</h1>
   </div>
@@ -17,11 +18,11 @@
       </div>   
 
       <div class="form-group">
-        <label>Make Default Vehicle</label>
-        <input type="checkbox" name="make_default" class="form-control" ng-model="scope.vehicle.makeDefault"/>
+        <label class="checkbox">
+          <input type="checkbox" name="make_default" ng-model="scope.vehicle.makeDefault"/>
+          Make Default Vehicle
+        </label>
       </div>
-
-      <p class="help-block"> {{ scope.message }} </p>
 
       <button class="btn btn-lg btn-primary" type="submit">Add Vehicle</button>
     </form>

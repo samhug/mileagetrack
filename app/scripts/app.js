@@ -33,6 +33,11 @@ angular.module('mileagetrackApp', [
         controller: 'SettingsCtrl',
         authenticate: true
       })
+      .when('/vehicle/add', {
+        templateUrl: 'partials/vehicle/add',
+        controller: 'VehicleAddCtrl',
+        authenticate: true
+      })
       .otherwise({
         redirectTo: '/'
       });

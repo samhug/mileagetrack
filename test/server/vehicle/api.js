@@ -65,6 +65,36 @@ describe('Vehicles API', function() {
         });
     });
 
+    it('should create a Vehicle', function(done) {
+      testUser1.request
+        .post('/api/vehicle')
+        .send({ name: 'New Vehicle'})
+        .expect('content-type', /json/)
+        .end(function (err, res) {
+          if (err) return done(err);
+          res.body.should.be.instanceof(Object);
+          done();
+        });
+    });
+
+    it('should create a default Vehicle', function(done) {
+      testUser1.request
+        .post('/api/vehicle')
+        .send({ name: 'New Default Vehicle', makeDefault: true })
+        .expect('content-type', /json/)
+        .end(function (err, res) {
+          if (err) return done(err);
+
+          User.findById(testUser1.userModel._id, function(err, user) {
+            if (err) return done(err);
+
+            res.body._id.should.equal(user.defaultVehicle.toString());
+            done();
+          });
+
+        });
+    });
+
     // Assert that user 2 can only retrieve the 1 vehicle he owns.
     it('should respond with JSON array of length 1', function(done) {
       testUser2.request

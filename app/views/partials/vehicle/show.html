@@ -3,16 +3,16 @@
   <h1>{{vehicle.name}}</h1>
 </div>
 
-<div class="row expander panel panel-default">
-  <div class="panel-heading" ng-click="formVisible = !formVisible">
+<div class="row expander panel panel-default" ng-init="isCollapsed=true">
+  <div class="panel-heading" ng-click="isCollapsed = !isCollapsed">
     <h3 class="panel-title">Add New Entry</h3>
   </div>
-  <div class="panel-body" ng-show="formVisible">
+  <div class="panel-body" collapse="isCollapsed">
     <form role="form" class="form" ng-submit="newEntry(form)" novalidate>
     
       <div class="form-group">
-        <label>Date Time</label>
-        <input type="datetime-local" name="date" class="form-control" ng-model="newEntryForm.date"/>    
+        <label>Date</label>
+        <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="newEntryForm.date" ng-required="true" close-text="Close" />
       </div>
 
       <div class="form-group">

@@ -1,6 +1,4 @@
-<div ng-include="'partials/navbar.html'"></div>
-
-<div class="row panel panel-default">
+<div class="row panel panel-default" ng-controller="LoginCtrl">
   <div class="panel-heading">
     <h1 class="panel-title">Login</h1>
   </div>
@@ -30,6 +28,6 @@
     </form>
 
     <hr>
-    Not registered? <a href="/signup" class="text-center new-account">Create an account.</a>
+    Not registered? <a ng-click="gotoSignup()" class="text-center new-account">Create an account.</a>
   </div>
 </div>

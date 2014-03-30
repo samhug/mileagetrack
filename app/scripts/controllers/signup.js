@@ -16,7 +16,7 @@ angular.module('mileagetrackApp')
         })
         .then( function() {
           // Account created, redirect to home
-          $location.path('/');
+          $location.path('/dashboard');
         })
         .catch( function(err) {
           err = err.data;
@@ -29,5 +29,13 @@ angular.module('mileagetrackApp')
           });
         });
       }
+
+    };
+
+    $scope.gotoLogin = function() {
+      if (typeof $scope.userForm.toggle !== 'undefined')
+        $scope.userForm.toggle();
+      else
+        $location.path('/login');
     };
   });

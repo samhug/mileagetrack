@@ -10,26 +10,23 @@ angular.module('mileagetrackApp', [
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'partials/main',
+        templateUrl: 'partials/pages/main',
         controller: 'MainCtrl',
-        authenticate: false
       })
       .when('/login', {
-        templateUrl: 'partials/login',
-        controller: 'LoginCtrl'
+        templateUrl: 'partials/pages/login',
       })
       .when('/signup', {
-        templateUrl: 'partials/signup',
-        controller: 'SignupCtrl'
+        templateUrl: 'partials/pages/signup',
       })
 
       .when('/dashboard', {
-        templateUrl: 'partials/dashboard',
+        templateUrl: 'partials/pages/dashboard',
         controller: 'DashboardCtrl',
         authenticate: true
       })
       .when('/settings', {
-        templateUrl: 'partials/settings',
+        templateUrl: 'partials/pages/settings',
         controller: 'SettingsCtrl',
         authenticate: true
       })

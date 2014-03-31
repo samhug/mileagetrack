@@ -1,6 +1,8 @@
 {
   "name": "mileagetrack",
   "version": "0.0.1",
+  "author": "Samuel Hug <samuel.b.hug@gmail.com>",
+  "description": "A basic mileage tracking web app.",
   "repository": {
     "type": "git",
     "url": "http://github.com/samuelhug/mileagetrack_angular.git"

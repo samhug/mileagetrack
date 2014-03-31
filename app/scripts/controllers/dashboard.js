@@ -29,7 +29,7 @@ angular.module('mileagetrackApp')
       // add vehicle page with the new_user param.
       if ($scope.vehicles.length === 0) {
         $scope.message = 'test';
-        $location.search('new_user');
+        $location.search('newUser');
         $location.path('/vehicle/add');
         return;
       }

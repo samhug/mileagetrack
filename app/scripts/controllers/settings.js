@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 angular.module('mileagetrackApp')
   .controller('SettingsCtrl', function ($scope, Auth) {

@@ -26,9 +26,10 @@ angular.module('mileagetrackApp')
 
 
     $scope.gotoSignup = function() {
-      if (typeof $scope.userForm.toggle !== 'undefined')
+      if (typeof $scope.userForm.toggle !== 'undefined') {
         $scope.userForm.toggle();
-      else
+      } else {
         $location.path('/signup');
+      }
     };
   });

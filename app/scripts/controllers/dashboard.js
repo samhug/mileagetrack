@@ -28,7 +28,7 @@ angular.module('mileagetrackApp')
       // If the user doesn't have any vehicles registered, redirect them to the
       // add vehicle page with the new_user param.
       if ($scope.vehicles.length === 0) {
-        $scope.message = "test";
+        $scope.message = 'test';
         $location.search('new_user');
         $location.path('/vehicle/add');
         return;

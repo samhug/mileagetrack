@@ -5,7 +5,7 @@ angular.module('mileagetrackApp')
     $scope.alerts = [];
 
     if ($location.search('new_user') !== undefined) {
-      $scope.alerts.push({ type: 'info', msg: 'Add a vehicle to get started!'}); 
+      $scope.alerts.push({ type: 'info', msg: 'Add a vehicle to get started!'});
     }
 
     // Add Vehicle Scope
@@ -19,7 +19,7 @@ angular.module('mileagetrackApp')
       if (form.$valid) {
         Vehicle.save(vscope.vehicle, function() {
           vscope.message = 'Vehicle Added';
-          $location.path("/");
+          $location.path('/');
         }, function () {
           vscope.message = 'Failed! ' + vscope.vehicle;
         });

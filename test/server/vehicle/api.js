@@ -1,9 +1,7 @@
 'use strict';
 
-var should   = require('should'),
-    mongoose = require('mongoose'),
+var mongoose = require('mongoose'),
     request  = require('supertest'),
-    Promise  = require('mpromise'),
     app      = require('../../../server'),
     helpers  = require('../helpers');
 
@@ -48,7 +46,9 @@ describe('Vehicles API', function() {
         .get('/api/vehicle')
         .expect(401)
         .end(function (err, res) {
-          if (err) return done(err);
+          if (err) {
+            return done(err);
+          }
           done();
         });
     });
@@ -59,7 +59,9 @@ describe('Vehicles API', function() {
         .expect(200)
         .expect('content-type', /json/)
         .end(function (err, res) {
-          if (err) return done(err);
+          if (err) {
+            return done(err);
+          }
           res.body.should.be.instanceof(Array);
           done();
         });
@@ -71,7 +73,9 @@ describe('Vehicles API', function() {
         .send({ name: 'New Vehicle'})
         .expect('content-type', /json/)
         .end(function (err, res) {
-          if (err) return done(err);
+          if (err) {
+            return done(err);
+          }
           res.body.should.be.instanceof(Object);
           done();
         });
@@ -83,10 +87,14 @@ describe('Vehicles API', function() {
         .send({ name: 'New Default Vehicle', makeDefault: true })
         .expect('content-type', /json/)
         .end(function (err, res) {
-          if (err) return done(err);
+          if (err) {
+            return done(err);
+          }
 
           User.findById(testUser1.userModel._id, function(err, user) {
-            if (err) return done(err);
+            if (err) {
+              return done(err);
+            }
 
             res.body._id.should.equal(user.defaultVehicle.toString());
             done();
@@ -102,7 +110,9 @@ describe('Vehicles API', function() {
         .expect(200)
         .expect('content-type', /json/)
         .end(function (err, res) {
-          if (err) return done(err);
+          if (err) {
+            return done(err);
+          }
           res.body.length.should.equal(1);
           done();
         });
@@ -116,7 +126,9 @@ describe('Vehicles API', function() {
         .expect(200)
         .expect('content-type', /json/)
         .end(function (err, res) {
-          if (err) return done(err);
+          if (err) {
+            return done(err);
+          }
           res.body.should.be.instanceof(Object);
           done();
         });

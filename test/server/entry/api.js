@@ -1,10 +1,6 @@
 'use strict';
 
-var should   = require('should'),
-    mongoose = require('mongoose'),
-    request  = require('supertest'),
-    Promise  = require('mpromise'),
-    app      = require('../../../server'),
+var mongoose = require('mongoose'),
     helpers  = require('../helpers');
 
 var User     = mongoose.model('User'),
@@ -25,6 +21,7 @@ describe('Entry API', function() {
     testUser = new helpers.TestUser();
     testUser.wait(function() {
       testUser.createVehicle();
+      testUser.createVehicle();
       testUser.wait(function() {
         done();
       });
@@ -41,7 +38,9 @@ describe('Entry API', function() {
         .expect(200)
         .expect('content-type', /json/)
         .end(function (err, res) {
-          if (err) return done(err);
+          if (err) {
+            return done(err);
+          }
           res.body.should.be.instanceof(Array);
           done();
         });

@@ -1,3 +1,5 @@
+'use strict';
+
 var mongoose = require('mongoose'),
     Promise  = require('mpromise'),
     request  = require('supertest'),
@@ -39,7 +41,7 @@ var TestUser = function(_unique) {
         p.resolve();
       });
   });
-}
+};
 
 TestUser.prototype._makeRandom = function(l) {
   var LENGTH = l || 8;
@@ -54,7 +56,7 @@ TestUser.prototype._makeRandom = function(l) {
   }
 
   return buf;
-}
+};
 
 TestUser.prototype._addPromise = function() {
   var p = new Promise();

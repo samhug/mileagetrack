@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
     app      = require('../../server'),
     Q        = require('q'),
     User     = mongoose.model('User'),
-    Vehicle  = mongoose.model('Vehicle');
+    Vehicle  = mongoose.model('Vehicle'),
+    Entry    = mongoose.model('Entry');
 
 var TestUser = function(_unique) {
 
@@ -76,6 +77,21 @@ TestUser.prototype.createVehicle = function(_unique) {
   }, function(err, vehicleModel) {
     if (err) throw err;
     this_.vehicles.push(vehicleModel);
+    p.resolve();
+  });
+};
+
+TestUser.prototype.addEntry = function(vehicle) {
+  var p = this._addPromise();
+
+  return Entry.create({
+    vehicle: vehicle._id,
+    date: new Date().toISOString(),
+    odometer: 100000,
+    gallons: 10,
+    price: 40
+  }, function(err, entryModel) {
+    if (err) throw err;
     p.resolve();
   });
 };

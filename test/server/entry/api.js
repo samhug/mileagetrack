@@ -21,9 +21,14 @@ describe('Entry API', function() {
     testUser = new helpers.TestUser();
     testUser.wait(function() {
       testUser.createVehicle();
-      testUser.createVehicle();
       testUser.wait(function() {
-        done();
+        testUser.addEntry(testUser.vehicles[0]);
+        testUser.createVehicle();
+        testUser.wait(function() {
+          testUser.addEntry(testUser.vehicles[1]);
+          testUser.addEntry(testUser.vehicles[1]);
+          done();
+        });
       });
     });
 
@@ -42,6 +47,20 @@ describe('Entry API', function() {
             return done(err);
           }
           res.body.should.be.instanceof(Array);
+          done();
+        });
+    });
+
+    it('should respond with 2 entries', function(done) {
+      testUser.request
+        .get('/api/vehicle/'+testUser.vehicles[1]._id+'/entry')
+        .expect(200)
+        .expect('content-type', /json/)
+        .end(function (err, res) {
+          if (err) {
+            return done(err);
+          }
+          res.body.length.should.equal(2);
           done();
         });
     });

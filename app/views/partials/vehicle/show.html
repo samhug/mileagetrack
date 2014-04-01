@@ -1,9 +1,7 @@
 
-<div>
-  <h1>{{vehicle.name}}</h1>
-</div>
-
 <div class="expander panel panel-default" ng-init="isCollapsed=true">
+
+  <!-- Add Mileage Entry Form -->
   <div class="panel-heading" ng-click="isCollapsed = !isCollapsed">
     <h3 class="panel-title">Add New Entry</h3>
   </div>
@@ -46,16 +44,20 @@
 
   <hr>
 
+  <!-- Mileage Entry List -->
   <table class="table">
     <tr>
       <th>Date</th>
       <th>Odometer</th>
+      <th>Gallons</th>
       <th>Total Price</th>
     </tr>
     <tr ng-repeat="entry in entries">
       <td>{{entry.date | date:'short'}}</td>
       <td>{{entry.odometer}}</td>
+      <td>{{entry.gallons}}</td>
       <td>{{entry.price}}</td>
     </tr>
   </table>
+
 </div>

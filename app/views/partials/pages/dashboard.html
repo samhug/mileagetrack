@@ -1,11 +1,21 @@
 <div ng-include="'partials/navbar'"></div>
 
-<h1><span ng-show="currentUser">{{ currentUser.name }}</span></h1>
+<h1>{{ currentUser.name }}</h1>
 
-<ul class="vehicles">
-  <li ng-repeat="vehicle in vehicles">
-  <p>{{vehicle.name}}</p>
-</ul>
+<!-- Vehicle Select Dropdown -->
+<div class="btn-group">
+  <button class="btn btn-default dropdown-toggle">
+    <strong>{{vehicle.name}} <span class="caret"></span></strong>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li role="presentation" class="dropdown-header">Vehicles</li>
+    <li ng-repeat="vehicle in vehicles">
+      <a ng-click="selectVehicle(vehicle)">{{vehicle.name}}</a>
+    </li>
+    <li role="presentation" class="divider"></li>
+    <li><a ng-click="addVehicle()">Add new</a></li>
+  </ul>
+</div>
 
 <div id="vehicleSummary" ng-include src='"partials/vehicle/show.html"'></div>
 

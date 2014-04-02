@@ -42,10 +42,8 @@
     </form>
   </div>
 
-  <hr>
-
   <!-- Mileage Entry List -->
-  <table class="table">
+  <table class="table table-striped table-bordered table-condensed">
     <tr>
       <th>Date</th>
       <th>Odometer</th>
@@ -53,10 +51,10 @@
       <th>Total Price</th>
     </tr>
     <tr ng-repeat="entry in entries">
-      <td>{{entry.date | date:'mediumDate'}}</td>
-      <td>{{entry.odometer}}</td>
-      <td>{{entry.gallons}}</td>
-      <td>{{entry.price}}</td>
+      <td>{{ entry.date | date:'mediumDate' }}</td>
+      <td>{{ entry.odometer | number:0 }}</td>
+      <td>{{ entry.gallons | number:3 }}</td>
+      <td>{{ entry.price | currency }}</td>
     </tr>
   </table>
 

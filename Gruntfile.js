@@ -411,6 +411,21 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-gitinfo');
+  grunt.registerTask('tag-revision', 'Tag the current build revision', function () {
+    grunt.task.requires('gitinfo');
+
+    var commitSHA = grunt.config.get('gitinfo').local.branch.current.SHA;
+
+    grunt.file.write('dist/public/version.json', JSON.stringify({
+      commit: commitSHA,
+      date: grunt.template.today()
+    }));
+  });
+
+  grunt.registerTask('version', ['gitinfo', 'tag-revision']);
+
+
   // Used for delaying livereload until after server has restarted
   grunt.registerTask('wait', function () {
     grunt.log.ok('Waiting for server reload...');
@@ -498,7 +513,8 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'rev',
-    'usemin'
+    'usemin',
+    'version'
   ]);
 
   grunt.registerTask('heroku', function () {

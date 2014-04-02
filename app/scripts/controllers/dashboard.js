@@ -1,26 +1,7 @@
 'use strict';
 
-angular.module('mileagetrackApp').directive(
-  'dateInput',
-  function(dateFilter) {
-    return {
-      require: 'ngModel',
-      template: '<input type="date"></input>',
-      replace: true,
-      link: function(scope, elm, attrs, ngModelCtrl) {
-        ngModelCtrl.$formatters.unshift(function (modelValue) {
-          return dateFilter(modelValue, 'yyyy-MM-dd');
-        });
-
-        ngModelCtrl.$parsers.unshift(function(viewValue) {
-          return new Date(viewValue);
-        });
-      },
-    };
-  });
-
 angular.module('mileagetrackApp')
-  .controller('DashboardCtrl', function ($scope, $location, User, Vehicle, Entry, dateFilter) {
+  .controller('DashboardCtrl', function ($scope, $location, User, Vehicle, Entry) {
 
     $scope.vehicles = Vehicle.list();
 
@@ -54,7 +35,7 @@ angular.module('mileagetrackApp')
 
     // New Mileage Entry Form
     $scope.newEntryForm = {
-      date: dateFilter(new Date(), 'yyyy-MM-dd'),
+      date: new Date(),
     };
     $scope.newEntry = function(form) {
       var e = angular.extend({ vehicle: $scope.vehicle._id }, form);

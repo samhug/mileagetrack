@@ -5,7 +5,8 @@ angular.module('mileagetrackApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'angular-loading-bar'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

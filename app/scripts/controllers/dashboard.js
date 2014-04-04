@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mileagetrackApp')
-  .controller('DashboardCtrl', function ($scope, $location, User, Vehicle, Entry) {
+  .controller('DashboardCtrl', function ($scope, $location, User, Vehicle) {
 
     $scope.vehicles = Vehicle.list();
 
@@ -16,14 +16,9 @@ angular.module('mileagetrackApp')
       }
     });
 
-    var updateEntries = function() {
-      $scope.entries = Entry.query({ vehicle: $scope.vehicle._id });
-    };
-
     // Vehicle Select Dropdown
     $scope.selectVehicle = function(vehicle) {
       $scope.vehicle = vehicle;
-      updateEntries();
     };
     $scope.addVehicle = function() {
       $location.path('/vehicle/add');
@@ -31,26 +26,5 @@ angular.module('mileagetrackApp')
 
 
     $scope.vehicle = Vehicle.get({id: $scope.currentUser.defaultVehicle});
-    $scope.vehicle.$promise.then(function () {
-      updateEntries();
-    });
-
-
-    // New Mileage Entry Form
-    $scope.resetEntryForm = function() {
-      $scope.newEntryForm = {
-        date: new Date(),
-      };
-    };
-
-    $scope.resetEntryForm();
-
-    $scope.newEntry = function(form) {
-      var e = angular.extend({ vehicle: $scope.vehicle._id }, form);
-      var entry = new Entry(e);
-      entry.$save();
-      $scope.resetEntryForm();
-      updateEntries();
-    };
 
   });

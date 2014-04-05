@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mileagetrackApp')
-  .controller('MainCtrl', function ($scope, $location, Auth) {
+  .controller('MainCtrl', function ($scope, $location, $modal, Auth) {
 
     // If the user is logged in, redirect then to the dashboard.
     if (Auth.isLoggedIn()) {
@@ -20,4 +20,13 @@ angular.module('mileagetrackApp')
         $scope.userForm.partial = '/partials/user/signup.html';
       }
     };
+
+    // Project Info Modal
+    $scope.infoModal = function () {
+      $modal.open({
+        templateUrl: '/partials/project_info_modal.html',
+        controller: 'ProjectInfoCtrl'
+      });
+    };
+
   });

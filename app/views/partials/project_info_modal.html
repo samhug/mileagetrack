@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="close()">&times;</button>
+  <h4 class="modal-title">MileageTrack - Project Info</h4>
+</div>
+<div class="modal-body">
+  <p>Github Project: <a href="https://github.com/samuelhug/mileagetrack">https://github.com/samuelhug/mileagetrack</a></p>
+  <p>Current Version: <a href="https://github.com/samuelhug/mileagetrack/commit/{{ projectInfo.commit }}">{{ projectInfo.commit }}</a></p>
+  <p>Build Date: {{ projectInfo.date }}</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+</div>

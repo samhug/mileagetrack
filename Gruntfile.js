@@ -417,7 +417,7 @@ module.exports = function (grunt) {
 
     var commitSHA = grunt.config.get('gitinfo').local.branch.current.SHA;
 
-    grunt.file.write('dist/public/version.json', JSON.stringify({
+    grunt.file.write('dist/public/project_info.json', JSON.stringify({
       commit: commitSHA,
       date: grunt.template.today()
     }));

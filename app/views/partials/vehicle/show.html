@@ -47,14 +47,18 @@
     <tr>
       <th>Date</th>
       <th>Odometer</th>
+      <th>Trip</th>
       <th>Gallons</th>
       <th>Total Price</th>
+      <th>MPG</th>
     </tr>
     <tr ng-repeat="entry in entries">
       <td>{{ entry.date | date:'mediumDate' }}</td>
       <td>{{ entry.odometer | number:0 }}</td>
+      <td>{{ entry.trip | number:0 }}</td>
       <td>{{ entry.gallons | number:3 }}</td>
       <td>{{ entry.price | currency }}</td>
+      <td>{{ entry.mpg | number:1 }}</td>
     </tr>
   </table>
 

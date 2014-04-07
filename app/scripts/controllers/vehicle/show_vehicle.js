@@ -4,7 +4,16 @@ angular.module('mileagetrackApp')
   .controller('VehicleShowCtrl', function ($scope, Entry) {
 
     var updateEntries = function() {
-      $scope.entries = Entry.query({ vehicle: $scope.vehicle._id });
+      $scope.entries = Entry.query({ vehicle: $scope.vehicle._id }, function () {
+        var prevOdometer;
+        angular.forEach($scope.entries, function (entry, i) {
+          if (i > 0) {
+            entry.trip = entry.odometer - prevOdometer;
+            entry.mpg = entry.trip / entry.gallons;
+          }
+          prevOdometer = entry.odometer;
+        });
+      });
     };
 
     // New Mileage Entry Form

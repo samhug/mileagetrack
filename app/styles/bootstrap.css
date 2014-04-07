@@ -4462,9 +4462,9 @@ a.thumbnail.active {
   color: #e6e6e6;
 }
 .alert-info {
-  background-color: #5bc0de;
-  border-color: #3dced8;
-  color: #ffffff;
+  background-color: #638dc2;
+  border-color: #0f0b5f;
+  color: #f0f0f0;
 }
 .alert-info hr {
   border-top-color: #2ac7d2;
@@ -6027,10 +6027,10 @@ legend {
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover {
   background-color: none;
-  background-image: -webkit-linear-gradient(#020202, #101112 40%, #191b1d);
-  background-image: linear-gradient(#020202, #101112 40%, #191b1d);
+  background-image: -webkit-linear-gradient(#02020f, #10111f 40%, #191b2b);
+  background-image: linear-gradient(#02020f, #10111f 40%, #191b2b);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff020202', endColorstr='#ff191b1d', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff02020f', endColorstr='#ff191b2b', GradientType=0);
   filter: none;
   border: 1px solid rgba(0, 0, 0, 0.6);
 }

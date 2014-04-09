@@ -1,4 +1,4 @@
-<div ng-controller="VehicleShowCtrl">
+<div class="vehicleShow" ng-controller="VehicleShowCtrl">
   <div class="row">
     <div class="col-md-6">
       <div class="well text-center">
@@ -21,46 +21,39 @@
     </div>
     <div class="panel-body" collapse="isCollapsed">
       <form role="form" class="form" ng-submit="newEntry(newEntryForm)" novalidate>
-
-  <!-- Add Mileage Entry Form -->
-  <div class="panel-heading" ng-click="isCollapsed = !isCollapsed">
-    <h3 class="panel-title">Add New Entry</h3>
-  </div>
-  <div class="panel-body" collapse="isCollapsed">
-    <form role="form" class="form" ng-submit="newEntry(newEntryForm)" novalidate>
     
-      <div class="form-group">
-        <label>Date</label>
-        <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="newEntryForm.date"
-               ng-required="true"
-               close-text="Close"/>
-      </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="newEntryForm.date"
+                ng-required="true"
+                close-text="Close"/>
+        </div>
 
-      <div class="form-group">
-        <label>Odometer Reading</label>
-        <input type="number" name="odometer" class="form-control" ng-model="newEntryForm.odometer" 
-               min="0"
-               step="1"
-               placeholder="e.g. 202833"
-               required/>
-      </div>
+        <div class="form-group">
+          <label>Odometer Reading</label>
+          <input type="number" name="odometer" class="form-control" ng-model="newEntryForm.odometer" 
+                min="0"
+                step="1"
+                placeholder="e.g. 202833"
+                required/>
+        </div>
 
-      <div class="form-group">
-        <label>Gallons</label>
-        <input type="number" name="gallons" class="form-control" ng-model="newEntryForm.gallons" 
-               min="0"
-               placeholder="e.g. 12.473"
-               required/>
-      </div>
+        <div class="form-group">
+          <label>Gallons</label>
+          <input type="number" name="gallons" class="form-control" ng-model="newEntryForm.gallons" 
+                min="0"
+                placeholder="e.g. 12.473"
+                required/>
+        </div>
 
-      <div class="form-group">
-        <label>Total Price</label>
-        <input type="number" name="price" class="form-control" ng-model="newEntryForm.price" 
-               min="0"
-               step="0.01"
-               placeholder="e.g. 47.54"
-               required/>
-      </div>
+        <div class="form-group">
+          <label>Total Price</label>
+          <input type="number" name="price" class="form-control" ng-model="newEntryForm.price" 
+                min="0"
+                step="0.01"
+                placeholder="e.g. 47.54"
+                required/>
+        </div>
 
         <p class="help-block"> {{ message }} </p>
 

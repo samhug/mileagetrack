@@ -77,6 +77,10 @@ body {
   }
 }
 
+.vehicleShow {
+  padding-top: 20px;
+}
+
 .expander .panel-heading {
   cursor: pointer;
 

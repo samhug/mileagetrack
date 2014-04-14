@@ -64,6 +64,12 @@ describe('User Model', function() {
     });
   });
 
+  it('should convert email to lowercase', function(done) {
+    user.email = 'UpperCase@WeirdEmail.com';
+    user.email.should.equal('uppercase@weirdemail.com');
+    done();
+  });
+
   it("should authenticate user if password is valid", function() {
     user.authenticate('password').should.be.true;
   });

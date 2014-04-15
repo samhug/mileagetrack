@@ -12,15 +12,14 @@ angular.module('mileagetrackApp', [
     $routeProvider
       .when('/', {
         templateUrl: 'partials/pages/main',
-        controller: 'MainCtrl',
+        controller: 'MainCtrl'
       })
       .when('/login', {
-        templateUrl: 'partials/pages/login',
+        templateUrl: 'partials/pages/login'
       })
       .when('/signup', {
-        templateUrl: 'partials/pages/signup',
+        templateUrl: 'partials/pages/signup'
       })
-
       .when('/dashboard', {
         templateUrl: 'partials/pages/dashboard',
         controller: 'DashboardCtrl',

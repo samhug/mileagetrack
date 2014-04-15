@@ -29,17 +29,14 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
+// Setup Express
 var app = express();
-
-// Express settings
 require('./lib/config/express')(app);
-
-// Routing
 require('./lib/routes')(app);
 
 // Start server
-app.listen(config.port, function () {
-  console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
+app.listen(config.port, config.ip, function () {
+  console.log('Express server listening on %s:%d, in %s mode', config.ip, config.port, app.get('env'));
 });
 
 // Expose app

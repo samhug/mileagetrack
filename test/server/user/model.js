@@ -1,6 +1,6 @@
 'use strict';
 
-var should   = require('should'),
+var should = require('should'),
     mongoose = require('mongoose'),
     app      = require('../../../server'),
     User = mongoose.model('User');

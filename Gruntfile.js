@@ -1,4 +1,4 @@
-// Generated on 2014-03-21 using generator-angular-fullstack 1.3.2
+// Generated on 2014-04-15 using generator-angular-fullstack 1.4.0
 'use strict';
 
 // # Globbing
@@ -6,6 +6,9 @@
 // 'test/spec/{,*/}*.js'
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var config = require('./lib/config/config');
 
 module.exports = function (grunt) {
 
@@ -56,7 +59,7 @@ module.exports = function (grunt) {
       },
       mochaTest: {
         files: ['test/server/**/*.js'],
-        tasks: ['mochaTest']
+        tasks: ['env:test', 'mochaTest']
       },
       jsTest: {
         files: ['test/client/spec/**/*.js'],
@@ -74,7 +77,7 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/views/**/*.html',
           '{.tmp,<%= yeoman.app %>}/styles/**/*.css',
           '{.tmp,<%= yeoman.app %>}/scripts/**/*.js',
-          '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
         ],
       
         options: {
@@ -174,7 +177,7 @@ module.exports = function (grunt) {
         options: {
           nodeArgs: ['--debug-brk'],
           env: {
-            PORT: process.env.PORT || 9000
+            PORT: config.port
           },
           callback: function (nodemon) {
             nodemon.on('log', function (event) {
@@ -236,6 +239,9 @@ module.exports = function (grunt) {
 
     // The following *-min tasks produce minified files in the dist folder
     imagemin: {
+      options : {
+        cache: false
+      },
       dist: {
         files: [{
           expand: true,
@@ -481,7 +487,7 @@ module.exports = function (grunt) {
       ]);
     }
 
-    if (target === 'client') {
+    else if (target === 'client') {
       return grunt.task.run([
         'clean:server',
         'concurrent:test',
@@ -490,13 +496,9 @@ module.exports = function (grunt) {
       ]);
     }
 
-    grunt.task.run([
-      'env:test',
-      'mochaTest',
-      'clean:server',
-      'concurrent:test',
-      'autoprefixer',
-      'karma'
+    else grunt.task.run([
+      'test:server',
+      'test:client'
     ]);
   });
 

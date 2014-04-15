@@ -76,22 +76,3 @@ body {
     border-bottom: 0;
   }
 }
-
-.vehicleShow {
-  padding-top: 20px;
-}
-
-.expander .panel-heading {
-  cursor: pointer;
-
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.expander .panel-title:after {
-  content: ' ▾';
-}

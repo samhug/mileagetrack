@@ -3,11 +3,13 @@
 angular.module('mileagetrackApp')
   .controller('VehicleShowCtrl', function ($scope, Entry) {
 
-    $scope.mpgAvg = 'N/A';
-    $scope.$pmAvg = 'N/A';
+    $scope.mpgAvg = 'N/A'; // Miles per galllon average
+    $scope.$pmAvg = 'N/A'; // Dollars per mile average
 
-    var updateEntries = function() {
-      $scope.entries = Entry.query({ vehicle: $scope.vehicle._id }, function () {
+    // Updates the entries table, using the mileage entries for the given vehicle
+    var updateEntries = function(vehicle) {
+      // Retrive mileage entries for the selected vehicle
+      $scope.entries = Entry.query({ vehicle: vehicle._id }, function () {
 
         var mpgTotal = 0;
         var $pmTotal = 0;
@@ -33,17 +35,26 @@ angular.module('mileagetrackApp')
       });
     };
 
+    // When the vehicle is switched update the entries to match.
+    $scope.$watch('vehicle', function () {
+      // If vehicle has a promise attached to it, wait for it.
+      if ($scope.vehicle.$promise !== undefined) {
+        $scope.vehicle.$promise.then(function () {
+          updateEntries($scope.vehicle);
+        });
+      }
+      else {
+        updateEntries($scope.vehicle);
+      }
+    });
+
+
     // New Mileage Entry Form
     $scope.resetEntryForm = function() {
       $scope.newEntryForm = {
         date: new Date(),
       };
     };
-
-    // When the vehicle is switched update the entries to match.
-    $scope.$watch('vehicle', function () {
-      updateEntries();
-    });
 
     $scope.resetEntryForm();
 

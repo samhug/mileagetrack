@@ -33,7 +33,7 @@ angular.module('mileagetrackApp')
     };
 
     $scope.gotoLogin = function() {
-      if (typeof $scope.userForm.toggle !== 'undefined') {
+      if ($scope.userForm !== undefined) {
         $scope.userForm.toggle();
       } else {
         $location.path('/login');

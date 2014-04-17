@@ -26,7 +26,7 @@ angular.module('mileagetrackApp')
 
 
     $scope.gotoSignup = function() {
-      if (typeof $scope.userForm.toggle !== 'undefined') {
+      if ($scope.userForm !== undefined) {
         $scope.userForm.toggle();
       } else {
         $location.path('/signup');
